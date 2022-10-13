@@ -23,6 +23,14 @@ public class Health : MonoBehaviour
         healthbarTexture.Apply();
     }
 
+    public void SetHealth(float newHealth)
+    {
+        health = newHealth;
+    }
+
+    public float GetHealth() { return health; }
+    public float GetMax() { return healthMax;  }
+
     void OnGUI()
     {
         float healtBarSize = health / healthMax * 100f;
