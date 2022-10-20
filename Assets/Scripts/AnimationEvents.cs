@@ -6,7 +6,7 @@ public class AnimationEvents : MonoBehaviour
 {
     [SerializeField]
     List<AudioClip> footstepsSounds;
-    AudioClip shootSound;
+   
     private AudioSource source;
 
     void Awake()
@@ -14,13 +14,8 @@ public class AnimationEvents : MonoBehaviour
         source = GetComponent<AudioSource>();
     }
 
-    void PlayFootStep()
+    void FootStep()
     {
         source.PlayOneShot(footstepsSounds[Random.Range(0, footstepsSounds.Count - 1)]);
-    }
-
-    void PlayShoot()
-    {
-        source.PlayOneShot(shootSound);
     }
 }

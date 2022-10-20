@@ -8,6 +8,8 @@ public class MagicShoot : MonoBehaviour
     GameObject prefabLightFade;
     [SerializeField]
     Transform shootOrigin;
+    [SerializeField]
+    AudioClip shootSound;
 
     void Shoot()
     {
@@ -27,14 +29,18 @@ public class MagicShoot : MonoBehaviour
             {
                 Instantiate(prefabLightFade, projectile.transform.position, Quaternion.identity);
             }
-        }        
+
+            GetComponent<AudioSource>().PlayOneShot(shootSound);
+        }
+
+        
     }
 
     void Update()
     {
         if(Input.GetMouseButtonDown(0))
         {
-            Shoot();
+            GetComponent<Animator>().SetTrigger("Shoot");
         }    
     }
 }
