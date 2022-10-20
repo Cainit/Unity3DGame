@@ -12,14 +12,22 @@ public class MagicShoot : MonoBehaviour
     void Shoot()
     {
         GameObject projectile = Instantiate(prefabProjectile, shootOrigin.position, Quaternion.identity);
-        
-        
-        projectile.GetComponent<Projectile>().Shoot(transform.forward + new Vector3(0,0.6f,0), 20f);
 
-        if (prefabLightFade != null)
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 2500))
         {
-            Instantiate(prefabLightFade, projectile.transform.position, Quaternion.identity);
-        }
+            Debug.Log(hit.transform.name);
+            Debug.Log(hit.point);
+            Vector3 dir = hit.point - transform.position;
+
+            projectile.GetComponent<Projectile>().Shoot(dir.normalized, 30f);
+
+            if (prefabLightFade != null)
+            {
+                Instantiate(prefabLightFade, projectile.transform.position, Quaternion.identity);
+            }
+        }        
     }
 
     void Update()
