@@ -11,6 +11,8 @@ public class MagicShoot : MonoBehaviour
     [SerializeField]
     AudioClip shootSound;
 
+    int ShootCount = 5;
+
     void Shoot()
     {
         GameObject projectile = Instantiate(prefabProjectile, shootOrigin.position, Quaternion.identity);
@@ -29,12 +31,24 @@ public class MagicShoot : MonoBehaviour
             }
 
             GetComponent<AudioSource>().PlayOneShot(shootSound);
+
+            --ShootCount;
         }
 
         
     }
 
-    void Update()
+    public void AddShoots(int count)
+    {
+        ShootCount += count;
+    }
+
+    void OnGUI()
+    {
+        GUI.Label(new Rect(10, 60, 100, 20), ShootCount.ToString());
+    }
+
+        void Update()
     {
         if(Input.GetMouseButtonDown(0))
         {
