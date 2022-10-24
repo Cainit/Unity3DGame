@@ -11,10 +11,13 @@ public class Projectile : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(direction*power, ForceMode.Impulse);
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag != "Player")
         {
+            if (other.gameObject.GetComponent<Health>() != null)
+                other.gameObject.GetComponent<Health>().Damage(5);
+
             if (lightFade != null)
             {
                 Instantiate(lightFade, transform.position + new Vector3(0, 0.05f, 0), Quaternion.identity);

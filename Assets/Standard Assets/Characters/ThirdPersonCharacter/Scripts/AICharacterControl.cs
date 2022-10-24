@@ -10,12 +10,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public UnityEngine.AI.NavMeshAgent agent { get; private set; }             // the navmesh agent required for the path finding
         public ThirdPersonCharacter character { get; private set; } // the character we are controlling
         public Transform target;                                    // target to aim for
+        public float AggroDist = 25;
 
+        bool aggro;
 
         private void Start()
         {
             // get the components on the object we need ( should not be null due to require component so no need to check )
-            agent = GetComponentInChildren<UnityEngine.AI.NavMeshAgent>();
+            agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
             character = GetComponent<ThirdPersonCharacter>();
 
 	        agent.updateRotation = false;
@@ -26,7 +28,22 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private void Update()
         {
             if (target != null)
-                agent.SetDestination(target.position);
+            {
+                if (Vector3.Distance(target.position, transform.position) <= AggroDist)
+                {
+                    agent.SetDestination(target.position);
+                    aggro = true;
+                }
+                else
+                {
+                    aggro = false;
+                    agent.SetDestination(transform.position);
+                }
+            }
+            else
+            {
+                aggro = false;
+            }
 
             if (agent.remainingDistance > agent.stoppingDistance)
                 character.Move(agent.desiredVelocity, false, false);

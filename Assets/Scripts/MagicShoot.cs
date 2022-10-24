@@ -19,8 +19,6 @@ public class MagicShoot : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 2500))
         {
-            Debug.Log(hit.transform.name);
-            Debug.Log(hit.point);
             Vector3 dir = hit.point - transform.position;
 
             projectile.GetComponent<Projectile>().Shoot(dir.normalized, 30f);

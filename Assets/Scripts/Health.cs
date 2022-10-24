@@ -29,8 +29,21 @@ public class Health : MonoBehaviour
     public float GetHealth() { return health; }
     public float GetMax() { return healthMax;  }
 
+    public void Damage(int damagePower)
+    {
+        health -= damagePower;
+        if (health <= 0)
+            Death();
+    }
+
+    public void Death()
+    {
+        Destroy(this.gameObject);
+    }
+
     void OnGUI()
     {
+        /*
         float healtBarSize = health / healthMax * 100f;
 
         GUI.Box(new Rect(10, 10, 100, 20), "");
@@ -42,7 +55,7 @@ public class Health : MonoBehaviour
         GUI.Box(new Rect(10, 10, healtBarSize, 20), "");
 
         GUI.skin.box.normal.background = background;
-
+        */
 
         //GUI.Box(new Rect(10, 10, 100, 20), "HealthBar");
     }
