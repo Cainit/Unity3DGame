@@ -49,6 +49,11 @@ public class Health : MonoBehaviour
         {
             GetComponent<NavMeshAgent>().enabled = false;
         }
+
+        if (GetComponent<IKController>() != null)
+        {
+            GetComponent<IKController>().ikActive = false;
+        }
         //Destroy(this.gameObject);
     }
 

@@ -47,10 +47,10 @@ public class IKController : MonoBehaviour
                     animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
                     animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
                     animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
-                    animator.SetIKPosition(AvatarIKGoal.RightHand, handsObj.position);
-                    animator.SetIKRotation(AvatarIKGoal.RightHand, handsObj.rotation);
-                    animator.SetIKPosition(AvatarIKGoal.LeftHand, handsObj.position);
-                    animator.SetIKRotation(AvatarIKGoal.LeftHand, handsObj.rotation);
+                    animator.SetIKPosition(AvatarIKGoal.RightHand, handsObj.position + new Vector3(0, 1.7f, 0));
+                    // animator.SetIKRotation(AvatarIKGoal.RightHand, handsObj.rotation);
+                    animator.SetIKPosition(AvatarIKGoal.LeftHand, handsObj.position + new Vector3(0, 1.7f, 0));
+                    //animator.SetIKRotation(AvatarIKGoal.LeftHand, handsObj.rotation);
                 }
             }
         }
