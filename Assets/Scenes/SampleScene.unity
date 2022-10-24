@@ -194,7 +194,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 149790, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_Name
-      value: ThirdPersonController
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 149790, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_TagString
@@ -1295,7 +1295,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 113348, guid: 54eb5844754051b40a918a84c33b7c1a, type: 3}
       propertyPath: m_Name
-      value: AIThirdPersonController
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 436670, guid: 54eb5844754051b40a918a84c33b7c1a, type: 3}
       propertyPath: m_RootOrder
@@ -1768,7 +1768,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516843355}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b6c1a7d5c019a045ab65a4baf03de13, type: 3}
   m_Name: 
@@ -1903,6 +1903,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1516843381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516843355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7853e331b5990d74d88f0e0d7edf7c9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ikActive: 1
+  handsObj: {fileID: 0}
+  lookObj: {fileID: 0}
+  interactables: {fileID: 792516614}
+  interactableNearMin: 5
 --- !u!1 &1517029951
 GameObject:
   m_ObjectHideFlags: 0
@@ -2118,6 +2135,23 @@ MonoBehaviour:
   health: 10
   healthMax: 10
   healthbarTexture: {fileID: 0}
+--- !u!114 &1560729292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560729281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7853e331b5990d74d88f0e0d7edf7c9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ikActive: 1
+  handsObj: {fileID: 88443216}
+  lookObj: {fileID: 88443216}
+  interactables: {fileID: 0}
+  interactableNearMin: 5
 --- !u!1001 &1622066144
 PrefabInstance:
   m_ObjectHideFlags: 0

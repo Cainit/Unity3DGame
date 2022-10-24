@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Health : MonoBehaviour
 {
@@ -36,9 +37,19 @@ public class Health : MonoBehaviour
             Death();
     }
 
+    public bool IsDead()
+    {
+        return health <= 0;
+    }
+
     public void Death()
     {
-        Destroy(this.gameObject);
+        GetComponent<Collider>().enabled = false;
+        if (GetComponent<NavMeshAgent>() != null)
+        {
+            GetComponent<NavMeshAgent>().enabled = false;
+        }
+        //Destroy(this.gameObject);
     }
 
     void OnGUI()

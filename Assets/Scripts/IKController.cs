@@ -7,7 +7,7 @@ public class IKController : MonoBehaviour
 {
     protected Animator animator;
     public bool ikActive = false;
-    public Transform rightHandObj = null;
+    public Transform handsObj = null;
     public Transform lookObj = null;
     public Transform interactables;
     public float interactableNearMin = 5f;
@@ -41,12 +41,16 @@ public class IKController : MonoBehaviour
                 }
 
                 // Устанавливаем цель для правой руки и выставляем её в позицию
-                if (rightHandObj != null)
+                if (handsObj != null)
                 {
                     animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
                     animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
-                    animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.position);
-                    animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandObj.rotation);
+                    animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
+                    animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
+                    animator.SetIKPosition(AvatarIKGoal.RightHand, handsObj.position);
+                    animator.SetIKRotation(AvatarIKGoal.RightHand, handsObj.rotation);
+                    animator.SetIKPosition(AvatarIKGoal.LeftHand, handsObj.position);
+                    animator.SetIKRotation(AvatarIKGoal.LeftHand, handsObj.rotation);
                 }
             }
         }
@@ -55,6 +59,8 @@ public class IKController : MonoBehaviour
         {
             animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0);
             animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 0);
+            animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0);
+            animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 0);
             animator.SetLookAtWeight(0);
         }
     }

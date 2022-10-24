@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
@@ -27,6 +26,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         private void Update()
         {
+            
+
             if (target != null)
             {
                 if (Vector3.Distance(target.position, transform.position) <= AggroDist)
