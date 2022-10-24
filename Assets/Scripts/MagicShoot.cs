@@ -45,7 +45,7 @@ public class MagicShoot : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Label(new Rect(10, 60, 100, 20), ShootCount.ToString());
+        GUI.Label(new Rect(10, 60, 100, 20), $"SHOOTS: {ShootCount}");
     }
 
         void Update()
