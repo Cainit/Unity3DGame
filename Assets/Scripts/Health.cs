@@ -54,6 +54,11 @@ public class Health : MonoBehaviour
         {
             GetComponent<IKController>().ikActive = false;
         }
+
+        if (GetComponent<AICharacterControl>() != null)
+        {
+            GetComponent<AICharacterControl>().EnableRagdoll();
+        }
         //Destroy(this.gameObject);
     }
 

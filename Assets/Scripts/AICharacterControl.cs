@@ -10,6 +10,7 @@ public class AICharacterControl : MonoBehaviour
     public Transform target;                                    // target to aim for
     public float AggroDist = 25;
     IKController ikController;
+    Health health;
 
     bool aggro;
 
@@ -19,9 +20,37 @@ public class AICharacterControl : MonoBehaviour
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         character = GetComponent<ThirdPersonCharacter>();
         ikController = GetComponent<IKController>();
+        health = GetComponent<Health>();
 
         agent.updateRotation = false;
 	    agent.updatePosition = true;
+
+        DisableRagdoll();
+    }
+
+    public void DisableRagdoll()
+    {
+        foreach (Collider collider in GetComponentsInChildren<Collider>())
+            collider.enabled = false;
+
+        foreach (Rigidbody rb in GetComponentsInChildren<Rigidbody>())
+            rb.isKinematic = true;
+
+        GetComponent<Collider>().enabled = true;
+        GetComponent<Rigidbody>().isKinematic = false;
+    }
+
+    public void EnableRagdoll()
+    {
+        foreach (Collider collider in GetComponentsInChildren<Collider>())
+            collider.enabled = true;
+
+        foreach (Rigidbody rb in GetComponentsInChildren<Rigidbody>())
+            rb.isKinematic = false;
+
+        GetComponent<Collider>().enabled = false;
+        GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<Animator>().enabled = false;
     }
 
 
@@ -43,7 +72,8 @@ public class AICharacterControl : MonoBehaviour
 
     private void Update()
     {
-            
+        if (health.IsDead())
+            return;
 
         if (target != null)
         {
